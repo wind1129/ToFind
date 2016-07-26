@@ -19,6 +19,7 @@ public class ZhihuFragment extends RecyclerFragment {
 
     @Override
     public void onRefresh() {
+        //jdksafahfaadadadad
 
     }
 }
