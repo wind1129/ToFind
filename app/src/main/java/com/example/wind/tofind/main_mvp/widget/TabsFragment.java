@@ -13,6 +13,7 @@ import com.example.wind.tofind.menu_mvp.widget.ZhihuFragment;
 import com.example.wind.tofind.menu_mvp.widget.FreshFragment;
 import com.example.wind.tofind.ui.BaseFragment;
 import com.example.wind.tofind.utils.Constants;
+import com.example.wind.tofind.utils.LogUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -90,6 +91,7 @@ public class TabsFragment extends BaseFragment {
             fragments.add(new FreshFragment());
             mTitles.add(getString(R.string.zhihu_news));
             mTitles.add(getString(R.string.fresh_news));
+            //LogUtils.d("zhihu_news",mTitles.get(0));
             pagerAdapter.setFragments(fragments,mTitles);
         }
 

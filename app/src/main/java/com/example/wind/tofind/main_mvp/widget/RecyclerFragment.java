@@ -13,11 +13,12 @@ import butterknife.Bind;
  */
 public abstract class RecyclerFragment extends BaseFragment implements SwipeRefreshLayout.OnRefreshListener{
     @Bind(R.id.list)
+    public
     RecyclerView recyclerView;//相当于listview
     @Bind(R.id.swipe_refresh)
     SwipeRefreshLayout swipeRefresh;
     boolean isFirst = true;   //whether is first time to enter fragment
-    int type;               // type of recyclerView's content
+    protected int type;               // type of recyclerView's content
     int lastPosition;       //last visible position
     int firstPosition;      //first visible position
 
