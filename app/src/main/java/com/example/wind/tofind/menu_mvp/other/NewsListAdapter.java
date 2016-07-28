@@ -19,7 +19,7 @@ import java.util.zip.Inflater;
 import io.realm.Realm;
 
 /**
- * Created by wind on 2016/7/27.
+ * Fresh news' recyclerView adapter
  */
 public class NewsListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private final Realm realm;

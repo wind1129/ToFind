@@ -7,7 +7,10 @@ import android.support.v7.widget.RecyclerView;
 import com.example.wind.tofind.main_mvp.widget.RecyclerFragment;
 import com.example.wind.tofind.main_mvp.widget.TabsFragment;
 import com.example.wind.tofind.menu_mvp.other.Data;
+import com.example.wind.tofind.menu_mvp.other.NewsListAdapter;
 import com.example.wind.tofind.menu_mvp.other.OnListFragmentInteract;
+import com.example.wind.tofind.menu_mvp.presenter.FreshDataPresenter;
+import com.example.wind.tofind.menu_mvp.presenter.NewsPresenter;
 import com.example.wind.tofind.menu_mvp.view.NewsView;
 import com.example.wind.tofind.ui.BaseActivity;
 
@@ -16,12 +19,16 @@ import com.example.wind.tofind.ui.BaseActivity;
  */
 public class FreshFragment extends RecyclerFragment implements SwipeRefreshLayout.OnRefreshListener,NewsView,OnListFragmentInteract{
     private BaseActivity mActivity;
+    private NewsPresenter presenter;
     private LinearLayoutManager layoutManager;
+    private NewsListAdapter adapter;
 
 
 
     @Override
     protected void initData() {
+        presenter = new FreshDataPresenter(this, mActivity);
+        onRefresh();
 
 
     }
@@ -33,6 +40,8 @@ public class FreshFragment extends RecyclerFragment implements SwipeRefreshLayou
         type = TabsFragment.TYPE_FRESH;
         layoutManager = new LinearLayoutManager(mActivity);
         recyclerView.setLayoutManager(layoutManager);
+        adapter = new NewsListAdapter(this, mActivity);
+        recyclerView.setAdapter(adapter);
 
     }
 
@@ -40,6 +49,7 @@ public class FreshFragment extends RecyclerFragment implements SwipeRefreshLayou
 
     @Override
     public void onRefresh() {
+        presenter.loadNews();
 
     }
 
