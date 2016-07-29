@@ -9,6 +9,7 @@ import com.example.wind.tofind.main_mvp.widget.TabsFragment;
 import com.example.wind.tofind.menu_mvp.other.Data;
 import com.example.wind.tofind.menu_mvp.other.NewsListAdapter;
 import com.example.wind.tofind.menu_mvp.other.OnListFragmentInteract;
+import com.example.wind.tofind.menu_mvp.other.ZhihuListAdapter;
 import com.example.wind.tofind.menu_mvp.presenter.FreshDataPresenter;
 import com.example.wind.tofind.menu_mvp.presenter.NewsPresenter;
 import com.example.wind.tofind.menu_mvp.view.NewsView;
@@ -19,29 +20,21 @@ import com.example.wind.tofind.ui.BaseActivity;
  */
 public class ZhihuFragment extends RecyclerFragment implements SwipeRefreshLayout.OnRefreshListener,NewsView,OnListFragmentInteract {
 
-    private BaseActivity mActivity;
-    private NewsPresenter presenter;
+
+    private ZhihuListAdapter adapter;
     private LinearLayoutManager layoutManager;
-    private NewsListAdapter adapter;
+    private NewsPresenter presenter;
+
+
+    @Override
+    protected  void  initView(){
+        super.initView();
+
+    }
 
 
     @Override
     protected void initData() {
-        presenter = new FreshDataPresenter(this, mActivity);
-        onRefresh();
-
-
-    }
-
-    @Override
-    protected void initView() {
-        super.initView();
-        mActivity = (BaseActivity) getActivity();
-        type = TabsFragment.TYPE_FRESH;
-        layoutManager = new LinearLayoutManager(mActivity);
-        recyclerView.setLayoutManager(layoutManager);
-        adapter = new NewsListAdapter(this, mActivity);
-        recyclerView.setAdapter(adapter);
 
     }
 
@@ -74,4 +67,6 @@ public class ZhihuFragment extends RecyclerFragment implements SwipeRefreshLayou
     public void onRefresh() {
 
     }
+
+
 }

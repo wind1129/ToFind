@@ -13,6 +13,8 @@ import com.example.wind.tofind.menu_mvp.presenter.FreshDataPresenter;
 import com.example.wind.tofind.menu_mvp.presenter.NewsPresenter;
 import com.example.wind.tofind.menu_mvp.view.NewsView;
 import com.example.wind.tofind.ui.BaseActivity;
+import com.example.wind.tofind.utils.Constants;
+import com.example.wind.tofind.utils.SPUtil;
 
 /**
  * Created by wind on 2016/7/22.
@@ -23,6 +25,12 @@ public class FreshFragment extends RecyclerFragment implements SwipeRefreshLayou
     private LinearLayoutManager layoutManager;
     private NewsListAdapter adapter;
 
+
+    @Override
+    public void onDestroyView() {
+        SPUtil.save(type + Constants.POSITION, firstPosition);
+        super.onDestroyView();
+    }
 
 
     @Override
@@ -55,7 +63,7 @@ public class FreshFragment extends RecyclerFragment implements SwipeRefreshLayou
 
     @Override
     public void showProgress() {
-
+        showProgress(true);
     }
 
     @Override
@@ -65,7 +73,7 @@ public class FreshFragment extends RecyclerFragment implements SwipeRefreshLayou
 
     @Override
     public void hideProgress() {
-
+        showProgress(false);
     }
 
     @Override
@@ -77,4 +85,6 @@ public class FreshFragment extends RecyclerFragment implements SwipeRefreshLayou
     public void onListFragmentInteraction(RecyclerView.ViewHolder holder) {
 
     }
+
+
 }
