@@ -24,11 +24,21 @@ public class ZhihuFragment extends RecyclerFragment implements SwipeRefreshLayou
     private ZhihuListAdapter adapter;
     private LinearLayoutManager layoutManager;
     private NewsPresenter presenter;
+    private BaseActivity mActivity;
 
 
     @Override
     protected  void  initView(){
         super.initView();
+        type = TabsFragment.TYPE_ZHIHU;
+
+        mActivity = (BaseActivity) getActivity();
+
+        layoutManager = new LinearLayoutManager(mActivity);
+        recyclerView.setLayoutManager(layoutManager);
+
+        adapter = new ZhihuListAdapter(this,mActivity);
+
 
     }
 
