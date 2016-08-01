@@ -12,6 +12,7 @@ import com.example.wind.tofind.menu_mvp.other.OnListFragmentInteract;
 import com.example.wind.tofind.menu_mvp.other.ZhihuListAdapter;
 import com.example.wind.tofind.menu_mvp.presenter.FreshDataPresenter;
 import com.example.wind.tofind.menu_mvp.presenter.NewsPresenter;
+import com.example.wind.tofind.menu_mvp.presenter.ZhihuDataPresenter;
 import com.example.wind.tofind.menu_mvp.view.NewsView;
 import com.example.wind.tofind.ui.BaseActivity;
 
@@ -38,6 +39,7 @@ public class ZhihuFragment extends RecyclerFragment implements SwipeRefreshLayou
         recyclerView.setLayoutManager(layoutManager);
 
         adapter = new ZhihuListAdapter(this,mActivity);
+        recyclerView.setAdapter(adapter);
 
 
     }
@@ -45,6 +47,7 @@ public class ZhihuFragment extends RecyclerFragment implements SwipeRefreshLayou
 
     @Override
     protected void initData() {
+        presenter = new ZhihuDataPresenter(this, (BaseActivity) getActivity());
 
     }
 

@@ -72,8 +72,10 @@ public class ZhihuListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
                     return new BannerView();
                 }
             },zhihuTops);
+            banner = itemHolder.banner;
 
         }
+
 
     }
 
